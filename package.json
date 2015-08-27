@@ -1,0 +1,26 @@
+{
+  "name": "syntax-theme-auto-changer",
+  "main": "./lib/syntax-theme-auto-changer",
+  "version": "0.1.1",
+  "description": "Syntax theme auto change by buffer grammar.",
+  "keywords": [
+    "syntax",
+    "gramar",
+    "theme"
+  ],
+  "repository": "https://github.com/nobuhito/syntax-theme-auto-changer",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "atom-space-pen-views": "^2.1.0"
+  },
+  "consumedServices": {
+    "status-bar": {
+      "versions": {
+        "^1.0.0": "consumeStatusBar"
+      }
+    }
+  }
+}
