@@ -23,8 +23,8 @@ module.exports = SyntaxThemeAutoChanger =
     if atom.config.get("syntax-theme-auto-changer.activateOnStartup") is "on"
       @start(@statusBar)
 
-  activate: (state)->
-    @defaultTheme = state || atom.config.get("core.themes")
+  activate: ->
+    @defaultTheme = atom.config.get("core.themes")
     atom.config.onDidChange "core.themes", ({newValue}) =>
       @defaultTheme = newValue if newValue[1] != @tempTheme
 
@@ -44,8 +44,8 @@ module.exports = SyntaxThemeAutoChanger =
     @statusBarTile = null
 
   serialize: ->
-    @defaultTheme.serialize()
-
+    atom.config.set("core.themes", @defaultTheme) if @defaultTheme
+    
   changeStatus: ->
     item = atom.workspace.getActiveTextEditor()
     if item?.getGrammar?
@@ -69,7 +69,7 @@ module.exports = SyntaxThemeAutoChanger =
       @tempTheme = @defaultTheme[1]
       return null
 
-  start: (statusBar)->
+  start: (statusBar) ->
     @SyntaxThemeAutoChangerView = new SyntaxThemeAutoChangerView({syntax: "* : #{@defaultTheme[1]}"})
     @statusBarTile = statusBar.addRightTile
       item: atom.views.getView(@SyntaxThemeAutoChangerView), priority: -1
