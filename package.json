@@ -1,7 +1,7 @@
 {
   "name": "syntax-theme-auto-changer",
   "main": "./lib/syntax-theme-auto-changer",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "Syntax theme auto change by buffer grammar.",
   "keywords": [
     "syntax",
