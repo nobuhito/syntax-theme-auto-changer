@@ -2,7 +2,7 @@
 SyntaxThemeAutoChangerView = require './syntax-theme-auto-changer-view'
 
 module.exports = SyntaxThemeAutoChanger =
-  subscriptions: null
+  sub: null
 
   config:
     activateOnStartup:
@@ -38,7 +38,7 @@ module.exports = SyntaxThemeAutoChanger =
         'syntax-theme-auto-changer:start': => @start(@statusBar)
 
   deactivate: ->
-    @sub.despose()
+    @sub?.dispose()
     atom.config.set("core.themes", @defaultTheme) if @defaultTheme
     @statusBarTile?.destroy()
     @statusBarTile = null
